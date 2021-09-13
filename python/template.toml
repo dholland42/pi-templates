@@ -1,0 +1,14 @@
+license = "BSD3"
+with_readme = true
+
+[files]
+files = ["{{ project }} /__init__.py"]
+directories = ["{{ project }}", ".devcontainer"]
+templates = [
+    "{{ project }}/entrypoint.py",
+    ".devcontainer/devcontainer.json",
+    "Dockerfile",
+    "pyproject.toml",
+    "poetry.toml",
+    ".gitignore"
+]
