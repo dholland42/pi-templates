@@ -1,6 +1,11 @@
-FROM python:latest as dev
+FROM python:latest as base
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+ENV HOME="/root"
+ENV PATH="$HOME/.poetry/bin"
+
+FROM base as dev
 
 WORKDIR /code
 COPY pyproject.toml .
@@ -9,7 +14,7 @@ COPY poetry.toml .
 RUN $HOME/.poetry/bin/poetry install --no-root
 
 
-FROM base as prod
+FROM dev as prod
 COPY {{ project }} ./{{ project }}
 
 RUN $HOME/.poetry/bin/poetry install
