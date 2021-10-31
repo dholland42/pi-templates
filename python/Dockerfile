@@ -1,4 +1,4 @@
-FROM python:3.10 as base
+FROM python:3.8 as base
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
 
